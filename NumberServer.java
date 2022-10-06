@@ -16,6 +16,7 @@ class Handler implements URLHandler {
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/add")) {
                 String[] parameters = url.getQuery().split("=");
+                System.out.println(parameters[0]);
                 if (parameters[0].equals("count")) {
                     num += Integer.parseInt(parameters[1]);
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
