@@ -16,20 +16,25 @@ class Handler implements URLHandler {
             System.out.println(parameters[0]);
             System.out.println(parameters[1]);
             if (parameters[0].equals("s")) {
-                list += parameters[1] + ", ";
+                list += "\n-" + parameters[1];
+                return String.format("Added to list!");
+            }
+        }
+
+        if (url.getPath().contains("/getlist")) {
+            String[] parameters = url.getQuery().split("=");
+            if (parameters[0].equals("finallist")) {
                 return String.format("List is now: %s", list);
             }
-            
         }
-        
+
         return "404 Not Found!";
     }
 }
 
-
 class SearchEngine {
     public static void main(String[] args) throws IOException {
-        if(args.length == 0){
+        if (args.length == 0) {
             System.out.println("Missing port number! Try any number between 1024 to 49151");
             return;
         }
